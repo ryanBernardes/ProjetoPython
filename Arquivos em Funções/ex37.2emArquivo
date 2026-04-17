@@ -1,0 +1,35 @@
+import os
+
+pasta = 'temp'
+arquivo = 'fibonacci.txt'
+
+
+def ver_impar(valor: int) -> int:
+    if valor % 2 != 0:
+        return valor
+    else:
+        return -1
+
+
+def ler_arquivo(caminho: str):
+    if not os.path.exists(caminho):
+        print("Arquivo não encontrado")
+        return
+
+    with open(caminho, 'r', encoding='utf-8') as f:
+        for linha in f:
+            numero = int(linha.strip())
+
+            resultado = ver_impar(numero)
+
+            if resultado != -1:
+                print(resultado)
+
+
+def main():
+    caminho = pasta + '/' + arquivo
+    ler_arquivo(caminho)
+
+
+if __name__ == '__main__':
+    main()
